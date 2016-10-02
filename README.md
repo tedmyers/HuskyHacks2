@@ -6,3 +6,4 @@ Designed for the Husky Hacks 2.0 Hackathon, this device creates a miniature worl
 Dependencies:
 pywu (v1.1 used here) for polling wunderground API
 pyserial (v3.1.1 used here) for serial communication to the Arduino
+adafruit dotstar library (v1.0.1 used here)
