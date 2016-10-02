@@ -3,6 +3,12 @@
 
 #define NUM_CONDITIONS 8
 #define NUM_CHARACTERS 30
+#define DATAPIN 4
+#define CLOCK 5
+
+Adafruit_DotStar strip = Adafruit_Dotstar (
+   NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
+
 
 const char *conditions[] = 
 {
@@ -28,12 +34,19 @@ Adafruit_DotStar init_dotstar(void);
 
 void setup() {
   Serial.begin(9600);
-  Adafruit_DotStar strip = init_dotstar();
   while (!Serial) {} 
 
   pinMode(mode_pin, INPUT);
   digitalWrite(mode_pin, HIGH); // enable pullup
   pinMode(led_pin, OUTPUT);
+
+  strip.begin();
+  strip.show();
+
+  for (int x = 0, x<30; x++){
+    all[x] = x;
+  }
+  }
 }
 
 uint8_t condition_string_to_num(char condition_read[]);
@@ -114,11 +127,6 @@ uint8_t condition_string_to_num(char condition_read[])
   return 0;
 }
 
-Adafruit_DotStar init_dotstar(void)
-{
-  // fill with functions to initialize the dotstar strip
-  return Adafruit_DotStar(60, 4, 5, DOTSTAR_BRG); // modify this
-}
 
 void blink_light(uint8_t blinks)
 {
