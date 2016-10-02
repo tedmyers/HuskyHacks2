@@ -68,9 +68,17 @@ void loop() {
       overcast();
     //"condition_2"
     case 2 :
-      condition_2();
-    case 3 :
-      condition_3();
+      partly_cloudy();
+    case 4 :
+      mostly_cloudy();
+    case 5 :
+      clear_weather();
+    case 6 :
+      chance_of_rain();
+    case 7 :
+      thunderstorm();
+    case 8 :
+      chance_of_a_thunderstorm();
     // condition unknown
     default :
       unknown_condition();
@@ -90,65 +98,6 @@ uint8_t condition_string_to_num(char condition_read[])
   return 0;
 }
 
-void overcast(void)
-{
-  // light LEDs cooler and/or dimmer
-
-  // light water drip?
-  
-}
-
-void partly_cloudy(void);
-{
-  // Somewhat bright clouds, some sun animation but cooler color temp
-}
-
-void mostly_cloudy(void);
-{
-  // darker, cool color balance. Slow cool fading
-}
-
-void clear_weather(void);
-{
-  // Warm, sunny color temperature
-}
-
-void chance_of_rain(void);
-{
-  
-}
-
-void thunderstorm(void);
-{
-  // Rain and flashing bright lights every few seconds
-}
-
-void chance_of_a_thunderstorm(void);
-{
-  
-}
-
-void unknown_condition(void);
-{
-  // ??? maybe fade through colors
-}
-
-void weather_demo(void)
-{
-  // cycle lights night-day fairly slowly (rotation of light source)
-
-  // have a rain event for ~15 seconds?
-
-  // lightning during the rainstorm
-
-  // if switch switched back, go back
-  if (digitalRead(mode_pin))
-    return;
-}
-void unknown_condition(void)
-{
-  // do something generic, maybe flash an indicator light
-}
 
 Adafruit_DotStar init_dotstar(void)
 {
