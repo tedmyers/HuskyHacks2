@@ -14,13 +14,14 @@ const char *conditions[] =
     "Chance of Rain",
     "Thunderstorm",
     "Chance of a Thunderstorm",
-    "Light Rain"
+    "Light Rain", 
+    "Light Drizzle"
 };
 
 String condition_read_string;
 char condition_read[NUM_CHARACTERS];
 
-uint8_t mode_pin = 5; // change this to proper pin
+uint8_t mode_pin = 3; // change this to proper pin
 uint8_t led_pin = 13;
 uint8_t condition_num;
 
@@ -46,6 +47,7 @@ void chance_of_rain(void);
 void thunderstorm(void);
 void chance_of_a_thunderstorm(void);
 void light_rain(void);
+void light_drizzle(void);
 void unknown_condition(void);
 void blink_light(uint8_t blinks);
 
@@ -76,29 +78,32 @@ void loop() {
     case 2 :
       partly_cloudy();
       break;
-    case 4 :
+    case 3 :
       mostly_cloudy();
       break;
-    case 5 :
+    case 4 :
       clear_weather();
       break;
-    case 6 :
+    case 5 :
       chance_of_rain();
       break;
-    case 7 :
+    case 6 :
       thunderstorm();
       break;
-    case 8 :
+    case 7 :
       chance_of_a_thunderstorm();
       break;
-    case 9 :
+    case 8 :
       light_rain();
+      break;
+    case 9 :
+      light_drizzle();
       break;
     default :
       unknown_condition();
       break;
   }
-  delay(2000);
+  delay(500);
 }
 
 uint8_t condition_string_to_num(char condition_read[])
