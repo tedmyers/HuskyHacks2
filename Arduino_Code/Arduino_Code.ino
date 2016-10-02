@@ -35,9 +35,13 @@ void setup() {
 uint8_t condition_string_to_num(char condition_read[]);
 void weather_demo(void);
 void overcast(void);
+void partly_cloudy(void);
+void mostly_cloudy(void);
+void clear_weather(void);
+void chance_of_rain(void);
+void thunderstorm(void);
+void chance_of_a_thunderstorm(void);
 void unknown_condition(void);
-void condition_2(void);
-void condition_3(void);
 
 void loop() {
 
@@ -94,6 +98,41 @@ void overcast(void)
   
 }
 
+void partly_cloudy(void);
+{
+  // Somewhat bright clouds, some sun animation but cooler color temp
+}
+
+void mostly_cloudy(void);
+{
+  // darker, cool color balance. Slow cool fading
+}
+
+void clear_weather(void);
+{
+  // Warm, sunny color temperature
+}
+
+void chance_of_rain(void);
+{
+  
+}
+
+void thunderstorm(void);
+{
+  // Rain and flashing bright lights every few seconds
+}
+
+void chance_of_a_thunderstorm(void);
+{
+  
+}
+
+void unknown_condition(void);
+{
+  // ??? maybe fade through colors
+}
+
 void weather_demo(void)
 {
   // cycle lights night-day fairly slowly (rotation of light source)
@@ -110,13 +149,10 @@ void unknown_condition(void)
 {
   // do something generic, maybe flash an indicator light
 }
-void condition_2(void) {}
-void condition_3(void) {}
 
 Adafruit_DotStar init_dotstar(void)
 {
   // fill with functions to initialize the dotstar strip
   return Adafruit_DotStar(60, 4, 5, DOTSTAR_BRG); // modify this
-  
 }
 
