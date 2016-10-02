@@ -7,38 +7,50 @@ void overcast(void)
   
 }
 
-void partly_cloudy(void);
+void partly_cloudy(void)
 {
+  blink_light(1);
   // Somewhat bright clouds, some sun animation but cooler color temp
 }
 
-void mostly_cloudy(void);
+void mostly_cloudy(void)
 {
+  blink_light(2);
   // darker, cool color balance. Slow cool fading
 }
 
-void clear_weather(void);
+void clear_weather(void)
 {
+  blink_light(3);
   // Warm, sunny color temperature
 }
 
-void chance_of_rain(void);
+void chance_of_rain(void)
 {
-  
+  blink_light(4);
 }
 
-void thunderstorm(void);
+void thunderstorm(void)
 {
+  blink_light(5);
   // Rain and flashing bright lights every few seconds
 }
 
-void chance_of_a_thunderstorm(void);
+void chance_of_a_thunderstorm(void)
 {
+  blink_light(6);
   
 }
 
-void unknown_condition(void);
+void light_rain(void)
 {
+  blink_light(7);
+  // pwm'd rain?
+}
+
+void unknown_condition(void)
+{
+  blink_light(20);
   // ??? maybe fade through colors
 }
 
@@ -53,8 +65,4 @@ void weather_demo(void)
   // if switch switched back, go back
   if (digitalRead(mode_pin))
     return;
-}
-void unknown_condition(void)
-{
-  // do something generic, maybe flash an indicator light
 }

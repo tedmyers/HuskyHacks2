@@ -1,17 +1,9 @@
-'''
-Python code will go here
-1. Poll wunderground API
-2. Parse this data for relevant information (current and tomorrow's weather)
-3. Send this address over a serial FTDI connection to Arduino
-'''
-
 import os
 import serial
 import time
 
 API_key = "09a921928db449a7"
 location = "'Boston MA'"
-#location = "'San Francisco CA'"
 
 def setup_pywu(API_key, location):
 	command = "pywu fetch %s %s" % (API_key, location)
@@ -35,7 +27,6 @@ if __name__=="__main__":
 	setup_pywu(API_key, location)
 	ser = setup_serial()
 	while True:
-		condition = current_condition()
+		#condition = current_condition()
+		condition = input('Enter condition to send:')
 		send_condition(condition)
-		print condition
-		time.sleep(5)

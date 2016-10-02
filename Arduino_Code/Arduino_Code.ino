@@ -13,13 +13,15 @@ const char *conditions[] =
     "Clear",
     "Chance of Rain",
     "Thunderstorm",
-    "Chance of a Thunderstorm"
+    "Chance of a Thunderstorm",
+    "Light Rain"
 };
 
 String condition_read_string;
 char condition_read[NUM_CHARACTERS];
 
 uint8_t mode_pin = 5; // change this to proper pin
+uint8_t led_pin = 13;
 
 Adafruit_DotStar init_dotstar(void);
 
@@ -30,6 +32,7 @@ void setup() {
 
   pinMode(mode_pin, INPUT);
   digitalWrite(mode_pin, HIGH); // enable pullup
+  pinMode(led_pin, OUTPUT);
 }
 
 uint8_t condition_string_to_num(char condition_read[]);
@@ -41,7 +44,9 @@ void clear_weather(void);
 void chance_of_rain(void);
 void thunderstorm(void);
 void chance_of_a_thunderstorm(void);
+void light_rain(void);
 void unknown_condition(void);
+void blink_light(uint8_t blinks);
 
 void loop() {
 
@@ -63,6 +68,8 @@ void loop() {
   
   switch (condition_num)
   {
+    case 0 :
+      break;
     //"Overcast"
     case 1 :
       overcast();
@@ -79,10 +86,13 @@ void loop() {
       thunderstorm();
     case 8 :
       chance_of_a_thunderstorm();
+    case 9 :
+      light_rain();
     // condition unknown
     default :
       unknown_condition();
   }
+  delay(2000);
 }
 
 uint8_t condition_string_to_num(char condition_read[])
@@ -98,10 +108,22 @@ uint8_t condition_string_to_num(char condition_read[])
   return 0;
 }
 
-
 Adafruit_DotStar init_dotstar(void)
 {
   // fill with functions to initialize the dotstar strip
   return Adafruit_DotStar(60, 4, 5, DOTSTAR_BRG); // modify this
+}
+
+void blink_light(uint8_t blinks)
+{
+  int i;
+  for (i=0; i<blinks; i++)
+  {
+    digitalWrite(led_pin, HIGH);
+    delay(100);
+    digitalWrite(led_pin, LOW);
+    delay(100);
+  }
+
 }
 
