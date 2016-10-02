@@ -28,5 +28,5 @@ if __name__=="__main__":
 	ser = setup_serial()
 	while True:
 		#condition = current_condition()
-		condition = input('Enter condition to send:')
+		condition = raw_input('Enter condition to send: ')
 		send_condition(condition)

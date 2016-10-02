@@ -22,6 +22,7 @@ char condition_read[NUM_CHARACTERS];
 
 uint8_t mode_pin = 5; // change this to proper pin
 uint8_t led_pin = 13;
+uint8_t condition_num;
 
 Adafruit_DotStar init_dotstar(void);
 
@@ -58,8 +59,6 @@ void loop() {
   condition_read_string = Serial.readString();
   strcpy(condition_read, condition_read_string.c_str());
   
-  
-  uint8_t condition_num;
   // Determine weather states
   if (condition_read)
   {
@@ -68,29 +67,36 @@ void loop() {
   
   switch (condition_num)
   {
+    // no value read
     case 0 :
       break;
-    //"Overcast"
     case 1 :
       overcast();
-    //"condition_2"
+      break;
     case 2 :
       partly_cloudy();
+      break;
     case 4 :
       mostly_cloudy();
+      break;
     case 5 :
       clear_weather();
+      break;
     case 6 :
       chance_of_rain();
+      break;
     case 7 :
       thunderstorm();
+      break;
     case 8 :
       chance_of_a_thunderstorm();
+      break;
     case 9 :
       light_rain();
-    // condition unknown
+      break;
     default :
       unknown_condition();
+      break;
   }
   delay(2000);
 }
@@ -116,7 +122,7 @@ Adafruit_DotStar init_dotstar(void)
 
 void blink_light(uint8_t blinks)
 {
-  int i;
+  uint8_t i;
   for (i=0; i<blinks; i++)
   {
     digitalWrite(led_pin, HIGH);
