@@ -7,6 +7,13 @@
 #define DATAPIN 4
 #define CLOCKPIN 5
 
+int all[NUMPIXELS];
+int iii=0;
+for (iii=0; iii<NUMPIXELS; iii++)
+{
+  all[iii] = iii;
+}
+
 Adafruit_DotStar strip = Adafruit_DotStar (
    NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
 

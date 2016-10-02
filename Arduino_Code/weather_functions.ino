@@ -18,7 +18,6 @@ void partly_cloudy(void)
     delay(5000);
     strip.setPixelColor(x, [231, 235, 86]);
   }
-  }
 }
 
 void mostly_cloudy(void)
