@@ -1,12 +1,13 @@
 #include <Adafruit_DotStar.h>
 #include <SPI.h>
+#define NUMPIXELS 30
 
 #define NUM_CONDITIONS 8
 #define NUM_CHARACTERS 30
 #define DATAPIN 4
-#define CLOCK 5
+#define CLOCKPIN 5
 
-Adafruit_DotStar strip = Adafruit_Dotstar (
+Adafruit_DotStar strip = Adafruit_DotStar (
    NUMPIXELS, DATAPIN, CLOCKPIN, DOTSTAR_BRG);
 
 
@@ -44,9 +45,9 @@ void setup() {
   strip.begin();
   strip.show();
 
-  for (int x = 0, x<30; x++){
+  int x;
+  for (x = 0; x<30; x++){
     all[x] = x;
-  }
   }
 }
 
