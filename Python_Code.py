@@ -6,6 +6,7 @@ Python code will go here
 '''
 
 import os
+import serial
 
 API_key = "09a921928db449a7"
 location = "'Boston MA'"
@@ -22,10 +23,15 @@ def current_condition():
 	return current_condition
 
 def send_condition(condition):
-	# send the condition
+	ser.write(condition)
 	return
+
+def setup_serial():
+	ser = serial.Serial('/dev/cu.usbmodemFD121', 9600)
+	return ser
 
 if __name__=="__main__":
 	setup_pywu(API_key, location)
+	ser = setup_serial()
 	condition = current_condition()
 	print condition	
