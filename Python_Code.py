@@ -7,11 +7,25 @@ Python code will go here
 
 import os
 
-location = 'Boston MA'
 API_key = "09a921928db449a7"
-command = "pywu fetch %s %s" % (location, API_key)
-os.system(command)
+location = "'Boston MA'"
+#location = "'San Francisco CA'"
 
-f = os.popen('pywu current condition')
-current_condition = f.read()
-print current_condition,
+def setup_pywu(API_key, location):
+	command = "pywu fetch %s %s" % (API_key, location)
+	os.system(command)
+	return
+
+def current_condition():
+	f = os.popen('pywu current condition')
+	current_condition = f.read()
+	return current_condition
+
+def send_condition(condition):
+	# send the condition
+	return
+
+if __name__=="__main__":
+	setup_pywu(API_key, location)
+	condition = current_condition()
+	print condition	
