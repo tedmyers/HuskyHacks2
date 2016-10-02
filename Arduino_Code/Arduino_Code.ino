@@ -1,18 +1,16 @@
-#define NUM_CONDITIONS 5 // find number of conditions, placeholder value
+#define NUM_CONDITIONS 8 // find number of conditions, placeholder value
 #define NUM_CHARACTERS 30
 
-//const char *conditions[NUM_CONDITIONS];
-//conditions[0] = "\0";
-//conditions[1] = "Overcast";
-//conditions[2] = "Partly Cloudy";
-//conditions[3] = 
-//conditions[4] = 
-//conditions[5] = 
 const char *conditions[] = 
 {
     "\0",
     "Overcast",
-    "condition_two" 
+    "Partly Cloudy",
+    "Mostly Cloudy",
+    "Clear",
+    "Chance of Rain",
+    "Thunderstorm",
+    "Chance of a Thunderstorm"
 };
 
 String condition_read_string;
@@ -34,7 +32,6 @@ void loop() {
 
   // Receive data from weather API if available
   // check for this every once and a while (put in an ISR?)
-  //strcpy(condition_read, Serial.readString());
   condition_read_string = Serial.readString();
   strcpy(condition_read, condition_read_string.c_str());
   
